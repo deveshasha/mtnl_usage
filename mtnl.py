@@ -13,7 +13,7 @@ try:
 	userfield.send_keys('26365815@a')
 	password = driver.find_element_by_name('password')
 	password.click()
-	password.send_keys('#password')
+	password.send_keys('2060142161')
 	login = driver.find_element_by_xpath('//input[@name="Submit2"]').click()
 	
 	usageinfo = WebDriverWait(driver,10).until(EC.presence_of_element_located((By.ID,'MenuLink3')))
@@ -22,9 +22,12 @@ try:
 	submitbtn = WebDriverWait(driver,10).until(EC.presence_of_element_located((By.XPATH,'/html/body/table[2]/tbody/tr[2]/td/table/tbody/tr[6]/td/input')))
 	submitbtn.click()
 
-	usage = driver.find_element_by_xpath('//*[@id="dataTable"]/tbody/tr[13]/td[4]/b')
+	#strstr = '//*[@id="dataTable"]/tbody/tr[4]/td[5]/b'
+	#usage = driver.find_element_by_xpath('//td[text()="Grand"]')
+	usage = driver.find_element_by_xpath('//*[@id="dataTable"]/tbody/tr[last()]/td[5]/b')
 	usage_text = usage.text
-	
+	#print type(usage_text)
+	usage_text = usage_text.replace(",","")
 	driver.get('http://deveshasha.pythonanywhere.com/mtnl/'+ str(int(float(usage_text))))
 
 except TimeoutException:
