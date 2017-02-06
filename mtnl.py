@@ -28,7 +28,9 @@ try:
 	usage_text = usage.text
 	#print type(usage_text)
 	usage_text = usage_text.replace(",","")
-	driver.get('http://deveshasha.pythonanywhere.com/mtnl/'+ str(int(float(usage_text))))
+	usage_text = float(usage_text)
+	usage_text = int(round(usage_text))
+	driver.get('http://deveshasha.pythonanywhere.com/mtnl/'+ str(usage_text))
 
 except TimeoutException:
 	print "The page took too long to load." 
